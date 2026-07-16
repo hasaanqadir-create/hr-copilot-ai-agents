@@ -35,7 +35,7 @@ Summary: ${parsed.summary ?? 'none'}
 
 Full resume text:
 ${parsed.rawText.slice(0, 8000)}`,
-    maxTokens: 800,
+    maxTokens:2000,
   });
 
   const score = Math.max(0, Math.min(100, Math.round(response.score)));
