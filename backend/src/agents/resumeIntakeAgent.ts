@@ -45,7 +45,7 @@ export async function parseResumeWithAi(rawText: string): Promise<StructuredResu
       '{"contact": {"email": string, "phone": string, "location": string, "linkedin": string, "github": string}, ' +
       '"skills": string[], "experienceYears": number, "education": string[], "summary": string}',
     user: `Resume text:\n\n${rawText.slice(0, 12000)}`,
-    maxTokens: 4000,
+    maxTokens: 8000,
   });
 }
 
