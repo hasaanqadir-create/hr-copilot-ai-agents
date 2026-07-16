@@ -30,7 +30,7 @@ export class GeminiClient implements AiClient {
       generationConfig: {
         maxOutputTokens: options.maxTokens ?? 1000,
         temperature: options.temperature ?? 0.3,
-        thinkingConfig: { thinkingBudget: 0 },
+        thinkingConfig: { thinkingLevel: 'low' },
         ...(options.jsonMode ? { responseMimeType: 'application/json' } : {}),
       },
     };
