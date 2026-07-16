@@ -50,6 +50,7 @@ export async function completeJson<T>(args: {
   try {
     return JSON.parse(cleaned) as T;
   } catch (err) {
-    throw new Error(`AI did not return valid JSON. Raw output: ${raw.slice(0, 300)}`);
+    console.error('[completeJson] FULL raw output (length:', raw.length, '):', raw);
+    throw new Error(`AI did not return valid JSON. Raw output length: ${raw.length}. Last 200 chars: ${raw.slice(-200)}`);
   }
 }
