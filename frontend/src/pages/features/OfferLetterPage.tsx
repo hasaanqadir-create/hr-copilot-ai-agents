@@ -43,6 +43,9 @@ export function OfferLetterPage() {
   }
 
   const inputStyle = { background: 'rgba(255,255,255,0.05)', border: '1px solid var(--border)', color: 'var(--text-primary)' };
+  const pdfUrl = offer?.pdfFilePath
+    ? `${import.meta.env.VITE_API_URL ?? ''}/uploads/${offer.pdfFilePath}`
+    : '';
 
   return (
     <div className="p-8 space-y-6">
@@ -117,11 +120,7 @@ export function OfferLetterPage() {
                     </div>
                     <div className="flex gap-2">
                       {offer.pdfFilePath && (
-                        
-                          href={`${import.meta.env.VITE_API_URL ?? ''}/uploads/${offer.pdfFilePath}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
+                        <a href={pdfUrl} target="_blank" rel="noopener noreferrer">
                           <Button variant="gradient" size="sm"><Download size={13} /> Download PDF</Button>
                         </a>
                       )}
