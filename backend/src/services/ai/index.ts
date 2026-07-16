@@ -47,8 +47,27 @@ export async function completeJson<T>(args: {
   });
 
   const cleaned = raw.replace(/```json\s*|```/g, '').trim();
+
+  // Extract just the first complete JSON object, ignoring any trailing
+  // garbage (e.g. an extra closing brace some models occasionally append).
+  function extractFirstJsonObject(text: string): string {
+    const start = text.indexOf('{');
+    if (start === -1) return text;
+    let depth = 0;
+    for (let i = start; i < text.length; i++) {
+      if (text[i] === '{') depth++;
+      else if (text[i] === '}') {
+        depth--;
+        if (depth === 0) return text.slice(start, i + 1);
+      }
+    }
+    return text.slice(start);
+  }
+
+  const extracted = extractFirstJsonObject(cleaned);
+
   try {
-    return JSON.parse(cleaned) as T;
+    return JSON.parse(extracted) as T;
   } catch (err) {
     console.error('[completeJson] FULL raw output (length:', raw.length, '):', raw);
     throw new Error(`AI did not return valid JSON. Raw output length: ${raw.length}. Last 200 chars: ${raw.slice(-200)}`);
