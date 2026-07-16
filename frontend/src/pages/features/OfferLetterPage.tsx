@@ -117,7 +117,11 @@ export function OfferLetterPage() {
                     </div>
                     <div className="flex gap-2">
                       {offer.pdfFilePath && (
-                        <a href={`/uploads/${offer.pdfFilePath}`} target="_blank" rel="noopener noreferrer">
+                        
+                          href={`${import.meta.env.VITE_API_URL ?? ''}/uploads/${offer.pdfFilePath}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           <Button variant="gradient" size="sm"><Download size={13} /> Download PDF</Button>
                         </a>
                       )}
