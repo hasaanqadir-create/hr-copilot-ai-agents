@@ -50,7 +50,8 @@ export class GeminiClient implements AiClient {
       throw new Error(`Gemini API error (${res.status}): ${errText}`);
     }
 
-    const data: any = await res.json();
-    return data.candidates?.[0]?.content?.parts?.[0]?.text ?? '';
+   const data: any = await res.json();
+    const parts = data.candidates?.[0]?.content?.parts ?? [];
+    return parts.map((p: any) => p.text ?? '').join('');
   }
 }
