@@ -25,13 +25,18 @@ export function InterviewGeneratorPage() {
   const { addNotification } = useNotificationStore();
 
   useEffect(() => {
-    api.get('/candidates').then(async (res) => {
-      const apps: any[] = [];
-      for (const c of res.data.slice(0, 10)) {
-        const appRes = await api.get('/candidates').catch(() => null);
-        apps.push({ ...c, applicationId: c._id });
+    api.get('/jobs').then(async (jobsRes) => {
+      const allApps: any[] = [];
+      for (const job of jobsRes.data) {
+        const res = await api.get(`/applications/job/${job._id}`).catch(() => ({ data: [] }));
+        for (const app of res.data) {
+          allApps.push({
+            _id: app._id,
+            name: `${app.candidate?.name} — ${job.title}`,
+          });
+        }
       }
-      setApplications(res.data);
+      setApplications(allApps);
     }).catch(() => {});
   }, []);
 
